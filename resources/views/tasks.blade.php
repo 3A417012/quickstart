@@ -34,7 +34,7 @@
         </form>
     </div>
 
-    <!-- 代辦：目前任務 -->
+    <!--目前任務 -->
 	@if (count($tasks) > 0)
     <tbody>
         @foreach ($tasks as $task)
@@ -44,7 +44,16 @@
                 <div>{{ $task->name }} </div>
             </td>
             <td>
-            <!-- 代辦：刪除按鈕 -->
+            <!-- 刪除按鈕 -->
+			<td>
+				<form action="/task/{{ $task->id }}" method="POST">
+					{{ csrf_field() }}
+					{{ method_field('DELETE') }}
+
+					<button>刪除任務</button>
+				</form>
+			</td>
+
             </td>
         </tr>
         @endforeach
